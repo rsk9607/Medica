@@ -3,27 +3,11 @@
 {% load static %}
 {% block title %}Bot{% endblock title %}
 {% block head %}
-<link rel="stylesheet" href="{% static 'css/style_bot.css' %}">
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
 {% endblock head %}
+
 {% block content %}
-<div class="chatbot-container">
-  <div class="chatbot-header">
-    <h3>MedicaBot</h3>
-  </div>
-  <div class="chatbot-body">
-    <div class="chatbot-message bot-message">
-      <p>Hello! How can I help you today?</p>
-    </div>
-  </div>
-  <div class="chatbot-input">
-    <form method="POST">
-      {% csrf_token %}
-    <input type="text" placeholder="Type your message here..." name="user_input">
-    <button>Send</button>
-    </form>
-  </div>
-</div>
-{% comment %} <div class="container-fluid">
+<div class="container-fluid">
   <div class="container">
     <div class="form">
       <label for="exampleFormControlTextarea1" class="form-label">Hi, How may I help you?</label>
@@ -44,8 +28,5 @@
       {% endif %}
     </div>
   </div>
-</div> {% endcomment %}
+</div> 
 {% endblock content %}
-{% block script %}
-<script src="{% static 'js/style_bot.js' %}"></script>
-{% endblock script %}
