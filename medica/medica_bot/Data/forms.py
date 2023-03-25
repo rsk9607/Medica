@@ -4,5 +4,6 @@ from .models import Patient
 class medica_form(forms.ModelForm):
     class Meta:
         model = Patient
-        feild ="__all__"
+        exclude = ['user','full_name']
+        
         

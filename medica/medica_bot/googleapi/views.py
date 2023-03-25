@@ -19,7 +19,7 @@ def login_user(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
       login(request, user)
-      return redirect('/')
+      return redirect('/home')
     else:
       template = loader.get_template('errorlogin.html')
       return HttpResponse(template.render())
@@ -29,7 +29,7 @@ def login_user(request):
 
 def logout_user(request):
   logout(request)
-  return redirect('/')
+  return redirect('/home')
 
 def register_user(request):
   researcher = ''
@@ -43,16 +43,16 @@ def register_user(request):
       pass2 = request.POST.get('password2')
       
       if len(username)>10:
-          messages.warning(request, "Username must be under 10 characters")
-          return redirect('login.html')
+        template = loader.get_template('errorlogin.html')
+        return HttpResponse(template.render())
       
       if not username.isalnum():
-          messages.warning(request, "Username can only contain Letters and Numbers")
-          return redirect('login.html')
+        template = loader.get_template('errorlogin.html')
+        return HttpResponse(template.render())
       
       if pass1 != pass2:
-          messages.warning(request, "Passwords do not match")
-          return redirect('login.html')
+        template = loader.get_template('errorlogin.html')
+        return HttpResponse(template.render())
       
       user = User.objects.create(username=username,email=email,password=make_password(pass1),first_name=first_name,last_name=last_name)
       user.save()

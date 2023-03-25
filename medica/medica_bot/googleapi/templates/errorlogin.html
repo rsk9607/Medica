@@ -22,6 +22,9 @@ Error login
                 <div>
                     <button type="button" class="btn btn-outline-light" id="Homepage">Homepage</button>
                 </div>
+                <div>
+                  <button type="button" class="btn btn-outline-light" id="Register">Register</button>
+              </div>
             </div>
 		</div>
 	</div>
@@ -80,10 +83,18 @@ Error login
   </script>
   <script>
     function handleClick() {
-      window.location.href = "/";
+      window.location.href = "/home";
     }
   
     var button = document.getElementById("Homepage");
+    button.addEventListener("click", handleClick);
+  </script>
+  <script>
+    function handleClick() {
+      window.location.href = "/register";
+    }
+  
+    var button = document.getElementById("Register");
     button.addEventListener("click", handleClick);
   </script>
 {% endblock scripts %}
