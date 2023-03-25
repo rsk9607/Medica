@@ -6,6 +6,7 @@ class Patient(models.Model):
     full_name = models.CharField(max_length=255)
     date_of_birth = models.DateField()
     address = models.CharField(max_length=255)
+    gender = models.CharField( max_length=50, default='Male')
     phone_number = models.CharField(max_length=20)
     emergency_contact_name = models.CharField(max_length=255)
     emergency_contact_phone = models.CharField(max_length=20)

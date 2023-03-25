@@ -15,8 +15,7 @@
         <div class="card card-registration my-4 bg-light">
           <div class="row g-0">
             <div class="col-xl-6 d-none d-xl-block">
-              <img src="{% static 'images/scott-graham-OQMZwNd3ThU-unsplash.jpg'%}"
-                alt="Sample photo" class="img-fluid"
+              <img src="{% static 'images/scott-graham-OQMZwNd3ThU-unsplash.jpg'%}" alt="Sample photo" class="img-fluid"
                 style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height: 100%;" />
             </div>
             <div class="col-xl-6">
@@ -24,48 +23,44 @@
                 <h3 class="mb-5 text-uppercase">Medica Registration Form</h3>
                 <form action="" method=POST>
                   {% csrf_token %}
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline mb-4">
-                      <input type="text" class="form-control form-control-lg"
-                        placeholder="First Name" name="first_name" />
-                      <label class="form-label" for="form3Example3"></label>
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline mb-4">
+                        <input type="text" class="form-control form-control-lg" placeholder="First Name"
+                          name="first_name" />
+                        <label class="form-label" for="form3Example3"></label>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline mb-4">
+                        <input type="text" class="form-control form-control-lg" placeholder="Last Name"
+                          name="last_name" />
+                        <label class="form-label" for="form3Example3"></label>
+                      </div>
                     </div>
                   </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline mb-4">
-                      <input type="text" class="form-control form-control-lg"
-                        placeholder="Last Name" name="last_name" />
-                      <label class="form-label" for="form3Example3"></label>
-                    </div>
+                  <div class="form-outline mb-4">
+                    <input type="email_id" class="form-control form-control-lg" placeholder="Email Id" name="emailid" />
+                    <label class="form-label" for="form3Example3"></label>
                   </div>
-                </div>
-                <div class="form-outline mb-4">
-                  <input type="email_id" class="form-control form-control-lg"
-                    placeholder="Email Id" name="emailid" />
-                  <label class="form-label" for="form3Example3"></label>
-                </div>
-                <div class="form-outline mb-4">
-                  <input type="text" class="form-control form-control-lg"
-                    placeholder="Username" name="user_name" />
-                  <label class="form-label" for="form3Example3"></label>
-                </div>
-                <div class="form-outline mb-4">
-                  <input type="text" class="form-control form-control-lg"
-                    placeholder="Password" name="password" />
-                  <label class="form-label" for="form3Example3"></label>
-                </div>
-                <div class="form-outline mb-4">
-                  <input type="text" class="form-control form-control-lg"
-                    placeholder="Password(again)" name="password2" />
-                  <label class="form-label" for="form3Example3"></label>
-                </div>
-
-                <div class="d-flex justify-content-end pt-3">
-                  <button type="button" class="btn btn-light btn-lg">Reset all</button>
-                  <button type="Submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
-                </div>
-              </form>
+                  <div class="form-outline mb-4">
+                    <input type="text" class="form-control form-control-lg" placeholder="Username" name="user_name" />
+                    <label class="form-label" for="form3Example3"></label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input type="text" class="form-control form-control-lg" placeholder="Password" name="password" />
+                    <label class="form-label" for="form3Example3"></label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input type="text" class="form-control form-control-lg" placeholder="Password(again)"
+                      name="password2" />
+                    <label class="form-label" for="form3Example3"></label>
+                  </div>
+                  <div class="d-flex justify-content-end pt-3">
+                    <button type="button" class="btn btn-light btn-lg" onclick="resetForms()">Reset all</button>
+                    <button type="Submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                  </div>
+                </form>
               </div>
             </div>
           </div>
@@ -75,3 +70,13 @@
   </div>
 </section>
 {% endblock content %}
+{% block scripts %}
+<script>
+  function resetForms() {
+    var forms = document.getElementsByTagName('form');
+    for (var i = 0; i < forms.length; i++) {
+      forms[i].reset();
+    }
+  }
+</script>
+{% endblock scripts %}
