@@ -2,9 +2,7 @@ from django.http import HttpResponse
 from django.template import loader
 from .models import Patient
 from django.shortcuts import redirect,render
-from django.contrib.auth.decorators import login_required
 
-@login_required
 def register_medica(request):
     context ={}
     template = loader.get_template('register_medica.html')

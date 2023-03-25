@@ -54,8 +54,9 @@ def register_user(request):
       
       user = User.objects.create(username=username,email=email,password=make_password(pass1),first_name=first_name,last_name=last_name)
       user.save()
-      messages.success(request, " Your CinemaShow account has been succesfully created ")
-      return redirect(login)
+      user = authenticate(request, username=username, password=pass1)
+      login(request, user)
+      return redirect('/register_medica')
   else:
     template = loader.get_template('register.html')
     return HttpResponse(template.render())
