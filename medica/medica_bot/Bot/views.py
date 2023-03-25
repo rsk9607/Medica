@@ -12,14 +12,14 @@ load_dotenv()
 api_key = os.getenv("OPENAI_KEY",None)
 openai.api_key=api_key
 chatbot_response=None
-@login_required
+# @login_required
 def chatbot(request):
     context={}
     chatbot_response=None
     if api_key is not None and request.method == "POST":
         user_input=request.POST.get('user_input')
         prompt=user_input
-        history= Patient.objects.filter(user__icontains='r').values_list('medical_history',flat=True).first()
+        history= Patient.objects.filter(user__user='r2').values_list('medical_history',flat=True).first()
         prompt = f"If the question is related to health,disease,personal hygiene,suggestions for health-answer this-patient history-{history} : {user_input},else say: I am only made to answer to health related queries.Thank You!"
         response=openai.Completion.create(
             engine = 'text-davinci-003',
