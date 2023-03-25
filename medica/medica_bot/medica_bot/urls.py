@@ -26,11 +26,8 @@ urlpatterns = [
     path('',include('googleapi.urls')),
     path('accounts/', include('allauth.urls')),
     path('login/',include('django.contrib.auth.urls')),
-<<<<<<< Updated upstream
     path('register/',include('django.contrib.auth.urls')),
-    path('',include('pharmacy.urls'))
-=======
+    path('',include('pharmacy.urls')),
     path('',include('pharmacy.urls')),
     path('',include('Data.urls'))
->>>>>>> Stashed changes
 ]
