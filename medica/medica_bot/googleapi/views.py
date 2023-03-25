@@ -7,9 +7,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.hashers import make_password,check_password
 from django.shortcuts import redirect
-from django.contrib.auth.decorators import login_required
 
-@login_required
 def login_user(request):
   researcher = ''
   study = ''

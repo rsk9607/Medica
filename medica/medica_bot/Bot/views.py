@@ -6,15 +6,12 @@ from django.contrib.auth.models import User
 import openai, os
 from dotenv import load_dotenv
 from Data.models import Patient
-from django.contrib.auth.decorators import login_required
 load_dotenv()
 
 api_key = os.getenv("OPENAI_KEY",None)
 openai.api_key=api_key
 chatbot_response=None
-@login_required
 def chatbot(request):
-    context={}
     chatbot_response=None
     if api_key is not None and request.method == "POST":
         user_input=request.POST.get('user_input')
@@ -30,14 +27,8 @@ def chatbot(request):
         print(response)
         chatbot_response=response["choices"][0]['text']
         chatbot_web()
-    return render(request,'bot_index.html',{"response":chatbot_response},context)
+    return render(request,'bot_index.html',{"response":chatbot_response})
 
 def chatbot_web():
    return JsonResponse({'response':chatbot_response})
 
-def home(request):
-  template = loader.get_template('index.html')
-  return HttpResponse(template.render())
-
-# Create your views here.
-# JsonResponse({'response':chatbot_response});
