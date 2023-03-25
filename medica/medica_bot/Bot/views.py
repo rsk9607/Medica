@@ -10,15 +10,23 @@ load_dotenv()
 
 api_key = os.getenv("OPENAI_KEY",None)
 openai.api_key=api_key
-chatbot_response=None
+# @login_required
 def chatbot(request):
     chatbot_response=None
     if api_key is not None and request.method == "POST":
         user_input=request.POST.get('user_input')
-        prompt=user_input
+        # prompt=user_input
         user = request.user
-        history= Patient.objects.filter(user=user).values_list('medical_history',flat=True).first()
-        prompt = "If the question is related to health,disease,personal hygiene,suggestions for health-answer this-patient history-{history} : {user_input},else say: I am only made to answer to health related queries.Thank You!"
+        patient = Patient.objects.get(user=user)
+        context ={
+        'patient':patient,
+        }
+        history=patient.medical_history
+        physician=patient.physician_notes
+        # username=request.user
+        # hist=Patient.objects
+        # history= Patient.objects.get(user=username).values_list('medical_history',flat=True)
+        prompt = f"patient's medical history is this -{history} and the physician response on the medical history is this- {physician} : {user_input}"
         response=openai.Completion.create(
             engine = 'text-davinci-003',
             prompt=prompt,
@@ -27,9 +35,20 @@ def chatbot(request):
         )
         print(response)
         chatbot_response=response["choices"][0]['text']
-        chatbot_web()
+        # chatbot_web()
+        brief=f"{chatbot_response}----draw conclusions from this in no more than 50 words"
+        response=openai.Completion.create(
+            engine = 'text-davinci-003',
+            prompt=brief,
+            max_tokens=256,
+            temperature=0.5
+        )
+        chatbot_response2=response["choices"][0]['text']
+        patient.medical_history=history+"question: "+user_input+" response: "+chatbot_response2
+        patient.save()
+
     return render(request,'bot_index.html',{"response":chatbot_response})
 
-def chatbot_web():
-   return JsonResponse({'response':chatbot_response})
+# def chatbot_web():
+#    return JsonResponse({'response':chatbot_response})
 
