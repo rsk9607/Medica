@@ -6,7 +6,10 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.hashers import make_password,check_password
+from django.shortcuts import redirect
+from django.contrib.auth.decorators import login_required
 
+@login_required
 def login_user(request):
   researcher = ''
   study = ''
@@ -16,11 +19,9 @@ def login_user(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
       login(request, user)
-      template = loader.get_template('index.html')
-      return HttpResponse(template.render())
+      return redirect('/')
     else:
-      messages.error(request,("There was an error logging in. TRY AGAIN!"))
-      template = loader.get_template('login.html')
+      template = loader.get_template('errorlogin.html')
       return HttpResponse(template.render())
   else:
     template = loader.get_template('login.html')
@@ -28,9 +29,8 @@ def login_user(request):
 
 def logout_user(request):
   logout(request)
-  messages.success(request,("You Are Logged Out!"))
-  template = loader.get_template('index.html')
-  return HttpResponse(template.render())
+  return redirect('/')
+
 def register_user(request):
   researcher = ''
   study = ''
