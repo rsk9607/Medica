@@ -11,7 +11,9 @@ def chatbot(request):
     chatbot_response=None
     if api_key is not None and request.method == "POST":
         user_input=request.POST.get('user_input')
-        prompt=user_input
+        # prompt=user_input
+        prompt = f"If the question is related to health,disease,personal hygiene,suggestions for health-answer this-patient history-have third stage cancer : {user_input},else say: I am only made to answer to health related queries.Thank You!"
+
 
         response=openai.Completion.create(
             engine = 'text-davinci-003',
