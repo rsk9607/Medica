@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'index.css' %}">
+{% endblock head %}
+
+{% block content %}
+<div class="container-fluid introfluid">
+  <div class="container intro">
+    <div class="text">
+      Hi there! As a health bot, I'm here to assist you with any health-related questions or concerns you may
+      have. Please feel free to ask me anything, but keep in mind that I'm not a substitute for professional
+      medical advice, and any information I provide should be verified with a healthcare provider. How can I help
+      you today?
+      <div class="d-grid gap-2 col-6 mx-auto">
+        <button class="btn btn-primary" type="button" id="myButton">ChatBOT</button>
+      </div>
+    </div>
+    <div class="img">
+      <img src="{% static 'Event Logo.gif' %}">
+    </div>
+  </div>
+</div>
+<div class="container-fluid cardfluid">
+  <div class="container carda">
+    <div>
+      <div class="card" style="width: 18rem;">
+        <img src="{% static 'calender.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Book your Appointments</h5>
+          <p class="card-text">"Book your appointment in seconds with our easy-to-use online booking system -
+            hassle-free, convenient and available 24/7. Say goodbye to waiting on hold and schedule your next
+            appointment with just a few clicks!. Your health is our pride"</p>
+          <a href="#" class="btn btn-primary">Book</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="width: 18rem;">
+        <img src="{% static 'tablets.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Set Remainders</h5>
+          <p class="card-text">"Never miss a dose again - keep your medication on track with our customizable reminder
+            system. Set reminders for medication schedules and refills and receive timely notifications right to your
+            device.Take control of your health and stay on top of your medication"</p>
+          <a href="remainder/" class="btn btn-primary">Set</a>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="card" style="width: 18rem;">
+        <img src="{% static 'store.jpg' %}" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Explore pharmacy</h5>
+          <p class="card-text">"Our E-pharmacy website provides a secure and easy-to-use platform for purchasing prescription and non-prescription medications, as well as healthcare products and fast shipping options, we ensure that only high-quality products from reputable manufacturers are delivered."</p>
+          <a href="pharmacy/" class="btn btn-primary">Explore</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container-fluid aboutus">
+  <div class="container aboutus">
+    <div>
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="{% static '2.png' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static '3.png' %}" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="{% static '4.png' %}" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="aboutus-head">
+      <h1>About Us</h1>
+      <p>Welcome to <i>medica</i> with chat bot! We are dedicated to helping patients manage their health in a
+        convenient and accessible way.</p>
+
+      <p>Our chat bot is designed to make it easy for patients to get personalized suggestions based on their past
+        medical information. Whether you need advice on a new symptom or are looking for guidance on managing a chronic
+        condition, our chat bot can help.</p>
+
+      <p>In addition to providing medical advice, our chat bot can also help you schedule appointments with doctors. We
+        understand how frustrating it can be to wait on hold or navigate complex phone systems, so we've made it easy to
+        book appointments with just a few clicks.</p>
+
+      <p>But that's not all - our chat bot can also help you find nearby pharmacies to buy your medications, and even
+        send you reminders to take your medicine on time. We know that managing multiple prescriptions can be
+        overwhelming, so we've designed our chat bot to make it as easy as possible.</p>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}
+{% block scripts %}
+<script>
+  function handleClick() {
+    window.location.href = "/bot/chatbot";
+  }
+
+  var button = document.getElementById("myButton");
+  button.addEventListener("click", handleClick);
+</script>
+{% endblock scripts %}

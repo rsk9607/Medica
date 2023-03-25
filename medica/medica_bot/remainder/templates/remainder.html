@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Remainders{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'remainder.css' %}">
+{% endblock head %}
+{% block content %}
+<div class="container-fluid remainderfluid">
+    <div class="container remainder">
+        <div>
+            <h1>Remainders</h1>
+        </div>
+        <div>
+            <form action="" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit">
+            </form>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

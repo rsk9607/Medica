@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Bot{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock head %}
+{% block content %}
+<div class="container-fluid">
+  <div class="container">
+    <div class="form">
+      <label for="exampleFormControlTextarea1" class="form-label">Hi, How may I help you?</label>
+    </div>
+    <div class="form">
+      <form method="POST">
+        {% csrf_token %}
+        <input class="form-control form-control-lg" type="text" placeholder="Type your Concern" name="user_input">
+        <br>
+        <input class="btn btn-primary" type="submit" value="Submit">
+      </form>
+    </div>
+    <div class="form">
+      {% if response %}
+      <div class="response">
+        {{ response | safe }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock content %}

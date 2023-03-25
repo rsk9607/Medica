@@ -1,0 +1,37 @@
+section.login{
+    margin: auto;
+    padding: 110px 0 110px;
+}
+
+
+.divider:after,
+.divider:before {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: #eee;
+}
+
+.h-custom {
+    height: calc(100% - 73px);
+}
+
+@media (max-width: 1000px) {
+    section.login{
+        margin: auto;
+        padding: 75px 0 75px;
+    }
+    .h-custom {
+        height: 100%;
+    }
+}
+
+@media (max-width: 450px) {
+    section.login{
+        margin: auto;
+        padding: 75px 0 75px;
+    }
+    .h-custom {
+        height: 100%;
+    }
+}
