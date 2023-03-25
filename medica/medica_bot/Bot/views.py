@@ -16,7 +16,7 @@ def chatbot(request):
     if api_key is not None and request.method == "POST":
         user_input=request.POST.get('user_input')
         prompt=user_input
-        history= Patient.objects.filter(user__icontains='r').values_list('medical_history',flat=True).first()
+        history= 'hi'
         prompt = f"If the question is related to health,disease,personal hygiene,suggestions for health-answer this-patient history-{history} : {user_input},else say: I am only made to answer to health related queries.Thank You!"
         response=openai.Completion.create(
             engine = 'text-davinci-003',
