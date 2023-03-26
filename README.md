@@ -14,7 +14,7 @@ Localhost server:
 2.Activate your virtual environment (if you're using one) by typing the following command:
 
 ```css
-  source <path_to_virtual_environment>/bin/activate
+ C:\Users\<filelocation>\Medica\medica>Scripts\activate
 ```
 <br></br>
 3.install requirements folder
