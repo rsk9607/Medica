@@ -12,7 +12,7 @@ def register_medica(request):
     context ={}
     if request.method == "POST":
         user = request.user
-        full_name = request.user.first_name +''+ request.user.last_name
+        full_name = request.user.first_name +' '+ request.user.last_name
         date_0f_birth = request.POST.get('date_of_birth')
         address = request.POST.get('address')
         gender = request.POST.get('gender')
@@ -59,10 +59,11 @@ def edit(request):
         return HttpResponse(template.render(context, request))
 
 def profile(request):
-    patient = Patient.objects.all().values()
     template = loader.get_template('profile.html')
+    user = request.user
+    patient = Patient.objects.get(user=user)
     context ={
-    'mypatient':patient
+        'patient':patient,
     }
     return HttpResponse(template.render(context, request))
 

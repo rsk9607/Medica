@@ -1,0 +1,42 @@
+img.profile {
+    width: 100%;
+    height: 100%;
+}
+
+.bg-black {
+    background: #000;
+}
+
+.skill-block {
+    width: 30%;
+}
+
+.d-flex.flex-row.text-white {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+@media (min-width: 991px) and (max-width:1000px) {
+    .skill-block {
+        padding: 32px !important;
+    }
+    .d-flex.flex-row.text-white {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+    
+}
+
+@media (min-width: 1200px) {
+    .skill-block {
+        padding: 56px !important;
+    }
+    .d-flex.flex-row.text-white {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+}
+
+body {
+    background-color: #eeeeee;
+}
