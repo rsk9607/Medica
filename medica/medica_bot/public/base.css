@@ -1,0 +1,17 @@
+ul.navbar-nav > li.nav-item.right{
+    text-transform: capitalize;
+}
+
+a{
+    text-decoration: none;
+}
+
+ul.footer {
+    list-style: none;
+}
+
+#logo {
+    border-width: 5px;
+    border-color: white;
+}
+
