@@ -29,5 +29,6 @@ urlpatterns = [
     path('register/',include('django.contrib.auth.urls')),
     path('',include('pharmacy.urls')),
     path('',include('pharmacy.urls')),
-    path('',include('Data.urls'))
+    path('',include('Data.urls')),
+    path('',include('doctor.urls')),
 ]

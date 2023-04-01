@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'doc_reg.css' %}">
+{% endblock head %}
+{% block content %}
+<section class="h-100 bg-dark">
+  <div class="container py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+        <div class="card card-registration my-4">
+          <div class="row g-0">
+            <div class="col-xl-6 d-none d-xl-block">
+              <img src="{% static 'Medical.png' %}" alt="Sample photo" class="img-fluid"
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; Height: 100%" />
+            </div>
+            <div class="col-xl-6">
+              <div class="card-body p-md-5 text-black">
+                <h3 class="mb-5 text-uppercase">Doctor registration form</h3>
+                <h3 class="mb-5 text-uppercase">Hi,
+                  {% if user.is_authenticated %}
+                  DR. {{user.username}}
+                  {% else %}
+                  DOC
+                  {% endif %}
+                </h3>
+                <form action="" method=POST>
+                  {% csrf_token %}
+                  <div class="form-outline mb-4">
+                    <input type="text" id="form3Example9" class="form-control form-control-lg" name="specialty" />
+                    <label class="form-label" for="form3Example9">Specialty</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input type="text" id="form3Example8" class="form-control form-control-lg" name="address" />
+                    <label class="form-label" for="form3Example8">Address</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input type="text" id="form3Example9" class="form-control form-control-lg" name="email" />
+                    <label class="form-label" for="form3Example9">Email</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <input type="text" id="form3Example9" class="form-control form-control-lg" name="phone" />
+                    <label class="form-label" for="form3Example9">Phone</label>
+                  </div>
+                  <div class="form-outline mb-4">
+                    <textarea type="text" id="form3Example97" class="form-control form-control-lg" name="bio">
+                      </textarea>
+                    <label class="form-label" for="form3Example97">Bio</label>
+                  </div>
+
+                  <div class="d-flex justify-content-end pt-3">
+                    <button type="button" class="btn btn-light btn-lg" onclick="resetForms()">Reset all</button>
+                    <button type="Submit" class="btn btn-warning btn-lg ms-2">Submit form</button>
+                  </div>
+
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock content %}
+{% block scripts %}
+<script>
+    function resetForms() {
+      var forms = document.getElementsByTagName('form');
+      for (var i = 0; i < forms.length; i++) {
+        forms[i].reset();
+      }
+    }
+  </script>
+{% endblock scripts %}

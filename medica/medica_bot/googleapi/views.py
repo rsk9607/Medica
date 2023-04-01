@@ -56,7 +56,10 @@ def register_user(request):
       user.save()
       user = authenticate(request, username=username, password=pass1)
       login(request, user)
-      return redirect('/register_medica')
+      if request.POST.get('are_you') == "Paitent":
+        return redirect('/register_medica')
+      elif request.POST.get('are_you') == "Doctor":
+        return redirect('/medica_doctor')
   else:
     template = loader.get_template('register.html')
     return HttpResponse(template.render())
