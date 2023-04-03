@@ -18,7 +18,11 @@ Appointment
             <div class="card-body">
                 <h5 class="card-title">{{x.name}}</h5>
                 <p class="card-text doc">{{x.specialty}}<br><br>{{x.bio}}</p>
-                <a href="/book/" class="btn btn-primary">Appoint</a>
+                <form method="POST" action="{% url 'appointment' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="book" value="{{x.id}}">
+                    <button type="submit" class="btn btn-primary">Primary</button>
+                </form>
             </div>
         </div>
         {% endfor %}

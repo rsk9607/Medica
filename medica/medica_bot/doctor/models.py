@@ -17,8 +17,10 @@ class Appointment(models.Model):
     doctor = models.ForeignKey(Doctor, on_delete=models.CASCADE)
     patient_name = models.CharField(max_length=255)
     patient_email = models.EmailField()
-    appointment_date = models.DateTimeField()
-    appointment_reason = models.TextField()
+    past_history = models.TextField(blank=True,null=True)
+    Physician_Note = models.TextField(blank=True,null=True)
+    appointment_date = models.DateTimeField(blank=True,null=True)
+    appointment_reason = models.TextField(blank=True,null=True)
     
 def __str__(self):
         return self.patient_name + " - " + str(self.appointment_date)
