@@ -68,8 +68,9 @@ body{
     border-bottom:2px solid #0062cc;
 }
 .profile-work{
-    padding: 14%;
-    margin-top: -15%;
+    padding: 0 14% 14%;
+    overflow-y: scroll;
+    height: 150px;
 }
 .profile-work p{
     font-size: 12px;
