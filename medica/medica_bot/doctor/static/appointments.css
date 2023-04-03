@@ -1,0 +1,43 @@
+div.container-fluid.appointmentsfluid{
+    padding: 50px 0 100px 0;
+    background: linear-gradient(to top left, #0000ff 0%, #66ccff 70%);
+}
+
+
+
+div.container.headerappo{
+    display: flex;
+    background-color: white;
+    justify-content: center;
+}
+
+.container.headerappo h1{
+    margin: 0;
+    padding: 50px 50px 25px;
+    font-size: 50px;
+    font-style: italic;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+div.container.appointment{
+    padding: 25px 0 100px 0;
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+p.card-text.doc{
+    overflow-y: scroll;
+    height: 12rem;
+}
+
+img.card-img-top{
+    border-radius: 40px;
+}
+
+.card{
+    border-radius: 50px;
+    padding: 1rem;
+    margin:10px;
+}

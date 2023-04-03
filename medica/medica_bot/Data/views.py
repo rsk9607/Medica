@@ -46,7 +46,7 @@ def edit(request):
             patient.full_name = request.POST.get('full_name')
             # patient.date_of_birth = request.POST.get('date_of_birth')
             patient.address = request.POST.get('address')
-            patient.gender = request.POST.get('gender')
+            # patient.gender = request.POST.get('gender')
             patient.phone_number = request.POST.get('phone_number')
             patient.emergency_contact_name = request.POST.get('emergency_contact_name')
             patient.emergency_contact_phone = request.POST.get('emergency_contact_phone')

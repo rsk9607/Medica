@@ -24,4 +24,8 @@ def medica_doctor(request):
 
 def appointment(request):
   template = loader.get_template('appointment.html')
-  return HttpResponse(template.render())
+  doctor = Doctor.objects.all().values()
+  context = {
+    'doctor':doctor,
+  }
+  return HttpResponse(template.render(context,request))
