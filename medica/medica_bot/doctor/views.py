@@ -13,7 +13,7 @@ def medica_doctor(request):
     specialty = request.POST.get('specialty')
     address = request.POST.get('address')
     phone = request.POST.get('phone')
-    email = request.POST.get('email')
+    email = request.user.email
     bio = request.POST.get('bio')
     
     Doctor.objects.create(user=user,name=name,specialty=specialty,address=address,phone=phone,email=email,bio=bio).save()

@@ -107,7 +107,6 @@
                   </div>
 
                   <div class="d-flex justify-content-end pt-3">
-                    <button type="button" class="btn btn-light btn-lg" onclick="resetForms()">Reset all</button>
                     <button type="Submit" class="btn btn-warning btn-lg ms-2">Save</button>
                   </div>
 
@@ -122,13 +121,3 @@
 </section>
 
 {% endblock content %}
-{% block scripts %}
-<script>
-  function resetForms() {
-    var forms = document.getElementsByTagName('form');
-    for (var i = 0; i < forms.length; i++) {
-      forms[i].reset();
-    }
-  }
-</script>
-{% endblock scripts %}
