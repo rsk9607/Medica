@@ -1,3 +1,6 @@
+html {
+    scroll-behavior: smooth;
+  }
 ul.navbar-nav > li.nav-item.right{
     text-transform: capitalize;
 }

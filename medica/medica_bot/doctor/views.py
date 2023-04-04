@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 from django.template import loader
-from .models import Doctor
+from .models import Doctor,Appointment
+from Data.models import Patient
 from django.shortcuts import redirect,render
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -13,7 +14,7 @@ def medica_doctor(request):
     specialty = request.POST.get('specialty')
     address = request.POST.get('address')
     phone = request.POST.get('phone')
-    email = request.POST.get('email')
+    email = request.user.email
     bio = request.POST.get('bio')
     
     Doctor.objects.create(user=user,name=name,specialty=specialty,address=address,phone=phone,email=email,bio=bio).save()
@@ -23,5 +24,37 @@ def medica_doctor(request):
         return HttpResponse(template.render(context, request))  
 
 def appointment(request):
-  template = loader.get_template('appointment.html')
-  return HttpResponse(template.render())
+  doctor = Doctor.objects.all()
+  patient = Patient.objects.get(user=request.user)
+  if request.method == 'POST':
+    doctor_id=  request.POST.get('book')
+    patient_name = patient.full_name
+    patient_email = patient.user.email
+    past_history = patient.medical_history
+    Physician_Note = patient.physician_notes
+    Appointment.objects.create(doctor_id=doctor_id,patient_name=patient_name,patient_email=patient_email,past_history=past_history,Physician_Note=Physician_Note).save()
+    return redirect('concern')
+  else:
+    context = {
+    'doctor':doctor,
+    }
+    template = loader.get_template('appointment.html')
+    return HttpResponse(template.render(context,request))
+
+def concern(request):
+  patient = Patient.objects.get(user=request.user)
+  appointment = Appointment.objects.get(patient_name = patient.full_name)
+  context ={}
+  if request.method == "POST":
+    appointment.appointment_date = request.POST.get('appointment_date')
+    appointment.appointment_reason = request.POST.get('appointment_reason')
+    appointment.save()
+    return redirect('listed appointment')
+  else:
+    template = loader.get_template('concern.html')
+    return HttpResponse(template.render(context,request))
+
+def list(request):
+  context ={}
+  template = loader.get_template('listed_appointment.html')
+  return HttpResponse(template.render(context,request))

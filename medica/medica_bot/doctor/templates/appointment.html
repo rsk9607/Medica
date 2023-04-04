@@ -1,1 +1,31 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block title %}
+Appointment
+{% endblock title %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'appointments.css' %}">
+{% endblock head %}
+{% block content %}
+<div class="container-fluid appointmentsfluid">
+    <div class="container headerappo">
+        <h1>Doctor For you</h1>
+    </div>
+    <div class="container appointment">
+        {% for x in doctor %}
+        <div class="card" style="width: 18rem;">
+            <img src="{% static 'avatar.jpg' %}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{x.name}}</h5>
+                <p class="card-text doc">{{x.specialty}}<br><br>{{x.bio}}</p>
+                <form method="POST" action="{% url 'appointment' %}">
+                    {% csrf_token %}
+                    <input type="hidden" name="book" value="{{x.id}}">
+                    <button type="submit" class="btn btn-primary">Primary</button>
+                </form>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
