@@ -25,7 +25,10 @@ def medica_doctor(request):
 
 def appointment(request):
   doctor = Doctor.objects.all()
-  patient = Patient.objects.get(user=request.user)
+  try:
+    patient = Patient.objects.get(user=request.user)
+  except:
+    return redirect('/login/')
   if request.method == 'POST':
     doctor_id=  request.POST.get('book')
     patient_name = patient.full_name
