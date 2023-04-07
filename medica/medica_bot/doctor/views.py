@@ -46,18 +46,13 @@ def appointment(request):
 
 def concern(request):
   patient = Patient.objects.get(user=request.user)
-  appointment = Appointment.objects.get(patient_name = patient.full_name)
+  appointment = Appointment.objects.get(appointment_date__isnull=True)
   context ={}
   if request.method == "POST":
     appointment.appointment_date = request.POST.get('appointment_date')
     appointment.appointment_reason = request.POST.get('appointment_reason')
     appointment.save()
-    return redirect('listed appointment')
+    return redirect('profile')
   else:
     template = loader.get_template('concern.html')
     return HttpResponse(template.render(context,request))
-
-def list(request):
-  context ={}
-  template = loader.get_template('listed_appointment.html')
-  return HttpResponse(template.render(context,request))

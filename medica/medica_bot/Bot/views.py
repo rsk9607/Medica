@@ -6,12 +6,17 @@ from django.contrib.auth.models import User
 import openai, os
 from dotenv import load_dotenv
 from Data.models import Patient
+from django.shortcuts import redirect,render
 load_dotenv()
 
 api_key = os.getenv("OPENAI_KEY",None)
 openai.api_key=api_key
 # @login_required
 def chatbot(request):
+    try:
+        patient = Patient.objects.get(user=request.user)
+    except:
+        return redirect('/login/')
     chatbot_response=None
     if api_key is not None and request.method == "POST":
         user_input=request.POST.get('user_input')
